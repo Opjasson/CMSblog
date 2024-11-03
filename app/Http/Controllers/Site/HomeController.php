@@ -7,8 +7,9 @@ use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    //
-    public function index(){
-        return view("")
+
+    // Routing ke halaman home
+    public function index(){    
+        return view("site.home.index");
     }
 }

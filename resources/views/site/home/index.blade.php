@@ -1,3 +1,5 @@
 @extends('layouts.site.site-layout')
 
-@se
+@section('content')
+    Home site page
+@endsection
