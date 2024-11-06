@@ -10,6 +10,6 @@ class HomeController extends Controller
 
     // Routing ke halaman home
     public function index(){    
-        return view("site.home.index");
+        return view("site.");
     }
 }
