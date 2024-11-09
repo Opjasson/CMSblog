@@ -9,6 +9,14 @@ class LoginController extends Controller
 {
     //
    public function index(){
-        return view('auth.login.login');
+        return view('auth.login.login', [
+            'routeAction' => route('auth.login.action'),
+            'routeHome' => route('site.home'),
+            'routeForgotPassword' => 'todo-forgot-password'
+        ]);
+    }
+
+    public function action(Request $request){
+        dd($request->all());
     }
 }

@@ -12,7 +12,8 @@
                 <h3 class="text-center font-weight-light my-4">Login</h3>
              </div>
              <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ $routeAction }}" method="POST">
+                    @csrf
                    <div class="form-floating mb-3">
                       <input name="email" class="form-control" id="inputEmail" type="email" placeholder="Enter email..."
                          autocomplete="username">
@@ -25,8 +26,8 @@
                    </div>
                    <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                       <span>
-                         <a class="small" href="/">Home</a> /
-                         <a class="small" href="/">Forgot Password?</a>
+                         <a class="small" href="{{ $routeHome }}">Home</a> /
+                         <a class="small" href="{{ $routeForgotPassword }}">Forgot Password?</a>
                       </span>
                       <button type="submit" class="btn btn-primary">Login</button>
                    </div>
