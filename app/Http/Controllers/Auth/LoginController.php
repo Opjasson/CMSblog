@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -28,9 +30,19 @@ class LoginController extends Controller
                 'required',
                 'string'
             ],
-            
         ]);
-        dd($validated);
+        // proses authentikasi
+        $authentikasi = Auth::attempt($validated);
+
+        if($authentikasi){
+            $request->session()->regenerate();
+            return redirect()->intended(route('dashboard.home', absolute: false));
+        }
+        
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed'),
+        ]);
+        
 
     }
 }
