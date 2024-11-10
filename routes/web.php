@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\{LoginController,LogOutControllers};
 use App\Http\Controllers\Dashboard\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\HomeController as SiteHomeController;
+
 
 
 
@@ -26,6 +27,7 @@ Route::middleware(['guest'])->group(
 // hanya bisa diakses ketika user sudah login
 Route::middleware(['auth'])->group(
     function () {
+        Route::post('/logout', LogOutControllers::class)->name('auth.logout');
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.home');
     }
 );
