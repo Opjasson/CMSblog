@@ -11,9 +11,16 @@ class InvalidFeedBack extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct(
+        public string $fieldName
+    )
     {
         //
+    }
+
+    public function shouldRender() : bool
+    {
+        return isset($this->fieldName);
     }
 
     /**
