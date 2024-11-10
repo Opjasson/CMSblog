@@ -16,8 +16,12 @@
                             @method('POST')
                             @csrf
                             <div class="form-floating mb-3">
-                                <input name="email" class="form-control @error('email') is-invalid @enderror "
-                                    id="inputEmail" type="email" placeholder="Enter email..." autocomplete="username">
+                                {{-- class helpers yang memanggil function isInvalidError di folder Support --}}
+                                <input name="email" @class([
+                                    'form-control',
+                                    'is-invalid' => isInvalidError('email')
+                                ]) 
+                                    id="inputEmail" type="email" placeholder="Enter email..." autocomplete="username" value="{{ old('email') }}">
                                 <label for="inputEmail">Email</label>
                                 @error('email')
                                     <div class="invalid-feedback">{{ $message }}</div>

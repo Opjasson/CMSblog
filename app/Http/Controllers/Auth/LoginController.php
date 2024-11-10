@@ -16,6 +16,7 @@ class LoginController extends Controller
         ]);
     }
 
+    // Function untuk melakukan validasi form
     public function action(Request $request){
        $validated = $request->validate([
             'email' => [
