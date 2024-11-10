@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 
@@ -19,29 +19,12 @@ class LoginController extends Controller
     }
 
     // Function untuk melakukan validasi form
-    public function action(Request $request){
-       $validated = $request->validate([
-            'email' => [
-                'required',
-                'string',
-                'email'
-            ],
-            'password' => [
-                'required',
-                'string'
-            ],
-        ]);
-        // proses authentikasi
-        $authentikasi = Auth::attempt($validated);
+    public function action(LoginRequest $request){
+        $request->authentikasi();
+        $request->session()->regenerate();
 
-        if($authentikasi){
-            $request->session()->regenerate();
-            return redirect()->intended(route('dashboard.home', absolute: false));
-        }
-        
-        throw ValidationException::withMessages([
-            'email' => trans('auth.failed'),
-        ]);
+        return redirect()->intended(route('dashboard.home', absolute: false));
+
         
 
     }

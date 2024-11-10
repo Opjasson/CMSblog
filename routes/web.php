@@ -16,6 +16,7 @@ Route::get('/', [SiteHomeController::class, 'index'])->name('site.home');
 // yang belum login
 Route::middleware(['guest'])->group(
     function () {
+        // terhubung dengan folder bootstrap app.php
         Route::get('/login', [LoginController::class, 'index'])->name('auth.login');
 
         Route::post('/login', [LoginController::class, 'action'])->name('auth.login.action');
