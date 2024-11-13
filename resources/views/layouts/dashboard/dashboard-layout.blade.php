@@ -1,11 +1,26 @@
+@php
+   $app = [
+      'name' => config('app.name'),
+      'lang' => str_replace('_', '-', app()->getLocale())
+];
+
+   // auth()->user() akan mengakses data user yang sedang aktif
+   $user = auth()->user();
+   $route = [
+      'dashboard' => route('dashboard.home'),
+      'profile' => '/',
+      'logout' => route('auth.logout')
+];
+@endphp
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ $app['lang'] }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @vite('resources/sass/app.scss')
-    <title>@yield('title')</title>
+    <title>{{ $app['name'] }}| @yield('title')</title>
 </head>
 
 <body class="sb-nav-fixed">
@@ -24,7 +39,7 @@
                    @yield('title')
                 </h1>
                 {{-- bread/content --}}
-                @include('layouts.dashboard._breadcrumb')
+                @yield('breadcrumb')
                 @yield('content')
              </div>
           </main>
