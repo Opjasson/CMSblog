@@ -12,68 +12,48 @@
                     @endif
 
                     @if ($key == 'menus')
-                        @foreach ($values as $menu)
-                        {{-- Fungsi isset directive untuk mengecek apakah bernilai NULL/tidak --}}
-                           @isset($menu['dropdown'])
-                               
-                           @endisset
+                        @foreach ($value as $menu)
+                            {{-- Fungsi isset directive untuk mengecek apakah bernilai NULL/tidak --}}
+                            @isset($menu['dropdown'])
+                                @php
+                                    $databdtarget = 'collapseLink' . $loop->index + 1;
+                                @endphp
+
+                                <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
+                                    data-bs-target="#{{ $databdtarget }}" aria-expanded="false" aria-controls="{{ $databdtarget }}">
+                                    <div class="sb-nav-link-icon">
+                                        <x-icon.bs-icon name="{{ $menu['icon'] }}" />
+                                    </div>
+                                    {{ $menu['title'] }}
+                                    <div class="sb-sidenav-collapse-arrow">
+                                        <x-icon.bs-icon name="bi-chevron-down" />
+                                    </div>
+                                </a>
+
+                                <div class="collapse" id="{{ $databdtarget }}" aria-labelledby="{{ $menu['title'] }}"
+                                    data-bs-parent="#sidenavAccordion">
+                                    <nav class="sb-sidenav-menu-nested nav">
+                                        @foreach ($menu['dropdown'] as $dropdown)
+                                            <a class="nav-link" href="{{ $dropdown['route'] }}">{{ $dropdown['title'] }}</a>
+                                        @endforeach
+                                    </nav>
+                                </div>
+                            @else
+                                <a class="nav-link" href="{{ $menu['route'] }}">
+                                    <div class="sb-nav-link-icon">
+                                        <x-icon.bs-icon name="{{ $menu['icon'] }}" />
+                                    </div>
+                                    {{ $menu['title'] }}
+                                </a>
+                            @endisset
                         @endforeach
                     @endif
                 @endforeach
             @endforeach
-            {{-- Menu lama --}}
-
-            <a class="nav-link" href="/">
-                <div class="sb-nav-link-icon">
-
-                    <x-icon.bs-icon name="bi-speedometer2" />
-                </div>
-                Dashboard
-            </a>
-            <div class="sb-sidenav-menu-heading">Dropdown</div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLink1"
-                aria-expanded="false" aria-controls="collapseLink1">
-                <div class="sb-nav-link-icon">
-                    <x-icon.bs-icon name="bi-share" />
-                </div>
-                Link 1
-                <div class="sb-sidenav-collapse-arrow">
-                    <i class="bi bi-chevron-down"></i>
-                </div>
-            </a>
-            <div class="collapse" id="collapseLink1" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="/">Link 1.1</a>
-                    <a class="nav-link" href="/">Link 1.2</a>
-                </nav>
-            </div>
-            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLink2"
-                aria-expanded="false" aria-controls="collapseLink2">
-                <div class="sb-nav-link-icon">
-                    <x-icon.bs-icon name="bi-share" />
-                </div>
-                Link 2
-                <div class="sb-sidenav-collapse-arrow">
-                    <x-icon.bs-icon name="bi-chevron-down" />
-                </div>
-            </a>
-            <div class="collapse" id="collapseLink2" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-                <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="/">Link 2.1</a>
-                    <a class="nav-link" href="/">Link 2.2</a>
-                </nav>
-            </div>
-            <a class="nav-link" href="/">
-                <div class="sb-nav-link-icon">
-                    <x-icon.bs-icon name="bi-share" />
-                </div>
-                Link 3
-            </a>
         </div>
-    </div>
+      </div>
     <div class="sb-sidenav-footer">
         <div class="small">Logged in as:</div>
         {{ $user['email'] }}
     </div>
-    {{-- menu lama --}}
 </nav>
