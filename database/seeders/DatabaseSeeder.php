@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         // User::factory(10)->create();
         // php artisan db:seed -> untuk migrate data seed ke dalam dataBase
         $this->call([
-            UserTableSeeder::class
+            UserTableSeeder::class,
+            TagTableSeeder::class
         ]);
     }
 }
