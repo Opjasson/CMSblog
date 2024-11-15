@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\{LoginController,LogOutControllers};
-use App\Http\Controllers\Dashboard\HomeController;
+use App\Http\Controllers\Dashboard\{HomeController,TagController};
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Site\HomeController as SiteHomeController;
 
@@ -29,5 +29,7 @@ Route::middleware(['auth'])->group(
     function () {
         Route::post('/logout', LogOutControllers::class)->name('auth.logout');
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.home');
+        Route::get('/dashboard/tags', [TagController::class, 'index'])->name('dashboard.tag');
     }
+
 );

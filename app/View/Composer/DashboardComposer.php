@@ -92,6 +92,16 @@ class DashboardComposer
                 ],
             ],
             [
+                'heading' => 'Blog',
+                'menus' => [
+                    [
+                        'title' => 'Tags',
+                        'icon' => 'bi-tags',
+                        'route' => route('dashboard.tag'),
+                    ],
+                ],
+            ],
+            [
                 'heading' => 'Dropdown',
                 'menus' => [
                     [

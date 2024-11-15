@@ -13,4 +13,8 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
     $trail->push('Dashboard', route('dashboard.home'));
 });
 
-// Home > Blog
+// Dashboard > Tags
+Breadcrumbs::for('db-tags', function (BreadcrumbTrail $trail) {
+    $trail->parent('dashboard');
+    $trail->push('Dashboard', route('dashboard.home'));
+});
