@@ -8,6 +8,22 @@
 
 @section('content')
 <div class="card">
+   <div class="card-header">
+      <div class="d-flex">
+         <div class="flex-grow-1">
+            <!-- Action create -->
+         </div>
+         <div>
+            <form class="d-flex" role="search" action="{{ $route['search'] }}" method="GET">
+               <input name="q" value="{{ $queryString['q'] }}" class="form-control me-2" type="search"
+                  placeholder="Search..." aria-label="Search">
+               <button class="btn btn-primary" type="submit">
+                  <x-icon.bs-icon name="bi-search"/>
+               </button>
+            </form>
+         </div>
+      </div>
+   </div>
     <div class="card-body">
        <table class="table table-hover table-bordered table-hover">
           <thead>
