@@ -12,7 +12,7 @@ class TagController extends Controller
     public function index() {
         
         return view('dashboard.tag.index', [
-            'tags' => Tags::take(10)->get()
+            'tags' => Tags::paginate(10)
         ]);
     }
 }

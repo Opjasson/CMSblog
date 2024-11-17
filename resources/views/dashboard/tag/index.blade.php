@@ -29,5 +29,8 @@
           </tbody>
        </table>
     </div>
+    <div class="card-footer">
+      {{ $tags->links() }}
+    </div>
  </div>
 @endsection
