@@ -30,6 +30,9 @@
        </table>
     </div>
     <div class="card-footer">
+      {{-- Cara pertama untuk menampilkan paginator laravel menggunakan php artisan vendor:publish --}}
+      {{-- {{ $tags->links('pagination::bootstrap-5') }} --}}
+      {{-- Cara kedua untuk menampilkan paginator menggunakan class provider --}}
       {{ $tags->links() }}
     </div>
  </div>
