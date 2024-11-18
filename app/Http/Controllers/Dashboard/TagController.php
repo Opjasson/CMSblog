@@ -35,6 +35,10 @@ class TagController extends Controller
     }
 
     public function create(){
-        return view('dashboard.tag.create');
+        return view('dashboard.tag.create',[
+            'route' => [
+                'back' => route('dashboard.tag')
+            ]
+        ]);
     }
 }

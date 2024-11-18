@@ -20,7 +20,8 @@
     <div class="card-footer bg-white border-top-0">
        <div class="d-flex flex-row-reverse">
           <div class="gap-3">
-             <button id="buttonBack" type="button" class="btn btn-secondary">
+            {{-- data-route berfungsi untuk mengarahkan ke halaman lain ketika diklik --}}
+             <button data-route="{{ $route['back'] }}" id="buttonBack" type="button" class="btn btn-secondary">
                 Back
              </button>
              <button id="buttonSave" type="button" class="btn btn-primary">
@@ -32,6 +33,8 @@
  </div>
 @endsection
 
+
 @push('script-internal')
     {{--  --}}
+    @vite('resources/js/views/dashboards/tag/create.view.js')
 @endpush

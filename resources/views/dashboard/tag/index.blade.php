@@ -38,6 +38,7 @@
                 <tr>
                    <td>{{ $tag->title }}</td>
                    <td>
+                     {{-- data-route berfungsi untuk mengarahkan ke halaman lain ketika diklik --}}
                       <button type="button" class="btn btn-primary">Edit</button>
                       <button type="button" class="btn btn-danger">Delete</button>
                    </td>
