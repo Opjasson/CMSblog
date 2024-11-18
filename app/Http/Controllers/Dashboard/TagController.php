@@ -25,11 +25,16 @@ class TagController extends Controller
         return view('dashboard.tag.index', [
             'tags' => $tags,
             'route' => [
-                'search' => route('dashboard.tag')
+                'search' => route('dashboard.tag'),
+                'create' => route('dashboard.tag.create')
             ],
             'queryString' => [
                 'q' => $q
             ]
         ]);
+    }
+
+    public function create(){
+        return view('dashboard.tag.create');
     }
 }

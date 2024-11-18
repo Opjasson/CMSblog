@@ -18,3 +18,9 @@ Breadcrumbs::for('db-tags', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
     $trail->push('Dashboard', route('dashboard.home'));
 });
+
+// Dashboard > Tags
+Breadcrumbs::for('db-tags-create', function (BreadcrumbTrail $trail) {
+    $trail->parent('db-tags');
+    $trail->push('Create', route('dashboard.tag.create'));
+});

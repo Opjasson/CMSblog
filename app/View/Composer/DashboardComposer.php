@@ -59,7 +59,7 @@ class DashboardComposer
                 if (isset($item['dropdown'])) {
                     $item['active'] = $setMenuActive($item['dropdown']);
                 } else {
-                    $item['active'] = ($item['route'] == Request::fullUrl());
+                    $item['active'] = ($item['route'] == Request::url());
                 }
 
                 $isActive = $isActive || $item['active'];

@@ -12,6 +12,7 @@
       <div class="d-flex">
          <div class="flex-grow-1">
             <!-- Action create -->
+            <a href="{{ $route['create'] }}" class="btn btn-primary">Create</a>
          </div>
          <div>
             <form class="d-flex" role="search" action="{{ $route['search'] }}" method="GET">

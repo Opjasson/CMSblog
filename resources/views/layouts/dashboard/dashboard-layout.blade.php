@@ -35,6 +35,8 @@
     </div>
     {{-- script/js --}}
     @vite('resources/js/app.js')
+    {{-- Directive stack berfungsi untuk menyimpan directive blade yang sedang dirender --}}
+    @stack('script-internal')
 </body>
 
 </html>
