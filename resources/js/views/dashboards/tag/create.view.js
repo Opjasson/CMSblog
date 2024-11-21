@@ -15,7 +15,7 @@ function handleSlug() {
     const inputSlug = document.getElementById("inputSlug");
     const textSlug = document.getElementById("textSlug");
 
-    inputTitle.addEventListener("click", (event) => {
+    inputTitle.addEventListener("keyup", (event) => {
         const title = event.target.value;
         const slug = generateSlug(title);
         inputSlug.value = slug;
@@ -23,7 +23,17 @@ function handleSlug() {
     });
 }
 
+function handleSubmit() {
+    const formTag = document.getElementById("formTag");
+    const buttonSave = document.getElementById("buttonSave");
+
+    buttonSave.addEventListener('click', () => {
+        formTag.submit();
+    })
+}
+
 document.addEventListener("click", () => {
     handleBack();
     handleSlug();
+    handleSubmit();
 });

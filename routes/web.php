@@ -31,6 +31,8 @@ Route::middleware(['auth'])->group(
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard.home');
         Route::get('/dashboard/tags', [TagController::class, 'index'])->name('dashboard.tag');
         Route::get('/dashboard/tags/create', [TagController::class, 'create'])->name('dashboard.tag.create');
+        Route::post('/dashboard/tags/create', [TagController::class, 'store'])->name('dashboard.tag.store');
+
     }
 
 );

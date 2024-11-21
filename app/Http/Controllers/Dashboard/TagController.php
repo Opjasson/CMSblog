@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Tags;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
 
 class TagController extends Controller
 {
@@ -36,9 +39,51 @@ class TagController extends Controller
 
     public function create(){
         return view('dashboard.tag.create',[
-            'route' => [
+            'form' => [
+                'action' => route('dashboard.tag.store'),
                 'back' => route('dashboard.tag')
             ]
         ]);
+    }
+
+    public function store(Request $request){
+
+        $validator = Validator::make($request->all(), [
+            'title' => [
+                    'required',
+                    'string',
+                    'min:3',
+                    'max:60'
+                ]
+        ]);
+
+        // validasi slug
+        $validator->after(function ($validator) use ($request) {
+            if($validator->errors()->isEmpty()) {
+                $slugValidator = Validator::make($request->all(), [
+                    'slug' => [
+                            'required',
+                            'string',
+                            'unique:tags,slug'
+                        ]
+                ],attributes:[
+                    'slug' => 'title'
+                ]);
+
+                if($slugValidator->fails()){
+                    foreach($slugValidator->errors()->all() as $error){
+                        $validator->errors()->add('title', $error);
+                    }
+                }
+
+            }
+        });
+
+        if($validator->fails()){
+            throw ValidationException::withMessages($validator->errors()->messages());
+        }
+        
+        Tags::create($validator->getData());
+        return redirect(route('dashboard.tag'));
     }
 }
