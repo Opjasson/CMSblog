@@ -39,8 +39,8 @@
                    <td>{{ $tag->title }}</td>
                    <td>
                      {{-- data-route berfungsi untuk mengarahkan ke halaman lain ketika diklik --}}
-                      <button type="button" class="btn btn-primary">Edit</button>
-                      <button type="button" class="btn btn-danger">Delete</button>
+                      <button data-route="{{ route('dashboard.tag.edit', ['slugId' => $tag->id]) }}" type="button" id="buttonEdit" class="btn btn-primary">Edit</button>
+                      <button data-route="{{ route('dashboard.tag.delete', ['slugId' => $tag->id]) }}" type="button" id="buttonDelete" class="btn btn-danger">Delete</button>
                    </td>
                 </tr>
              @endforeach
@@ -53,5 +53,15 @@
       {{-- Cara kedua untuk menampilkan paginator menggunakan class provider --}}
       {{ $tags->links() }}
     </div>
+    <form id="formDeleteTag" action="" method="POST">
+      @csrf
+      @method('DELETE')
+    </form>
+
  </div>
 @endsection
+
+@push('script-internal')
+    {{--  --}}
+    @vite('resources/js/views/dashboards/tag/index.view.js')
+@endpush

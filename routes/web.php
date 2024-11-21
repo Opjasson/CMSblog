@@ -32,7 +32,9 @@ Route::middleware(['auth'])->group(
         Route::get('/dashboard/tags', [TagController::class, 'index'])->name('dashboard.tag');
         Route::get('/dashboard/tags/create', [TagController::class, 'create'])->name('dashboard.tag.create');
         Route::post('/dashboard/tags/create', [TagController::class, 'store'])->name('dashboard.tag.store');
-
+        Route::get('/dashboard/tags/{slugId}/edit', [TagController::class, 'edit'])->name('dashboard.tag.edit');
+        Route::put('/dashboard/tags/{slugId}', [TagController::class, 'update'])->name('dashboard.tag.update');
+        Route::delete('/dashboard/tags/{slugId}', [TagController::class, 'delete'])->name('dashboard.tag.delete');
     }
 
 );

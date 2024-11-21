@@ -16,11 +16,21 @@ Breadcrumbs::for('dashboard', function (BreadcrumbTrail $trail) {
 // Dashboard > Tags
 Breadcrumbs::for('db-tags', function (BreadcrumbTrail $trail) {
     $trail->parent('dashboard');
-    $trail->push('Dashboard', route('dashboard.home'));
+    $trail->push('Tags', route('dashboard.tag'));
 });
 
 // Dashboard > Tags
 Breadcrumbs::for('db-tags-create', function (BreadcrumbTrail $trail) {
     $trail->parent('db-tags');
     $trail->push('Create', route('dashboard.tag.create'));
+});
+
+// Dashboard > Tags > Edit > [title]
+Breadcrumbs::for('db-tags-edit', function (BreadcrumbTrail $trail, $tag) {
+    $route =  route('dashboard.tag.edit', [
+        'slugId' => $tag->id
+    ]);
+    $trail->parent('db-tags');
+    $trail->push('Edit', $route);
+    $trail->push($tag->title, $route);
 });
