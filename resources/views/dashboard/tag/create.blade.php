@@ -9,12 +9,14 @@
 <div class="card">
     <div class="card-body">
        <form id="formTag" action="" method="POST">
+         @csrf
+         @method('POST')
           <label for="inputTitle" class="form-label">Title</label>
           <input name="title" type="text" id="inputTitle" class="form-control">
           <div id="textSlug" class="form-text">
-             slug-title
+             
           </div>
-          <input name="slug" type="hidden" id="inputSlug">
+          <input name="slug" type="hidden" id="inputSlug" value="">
        </form>
     </div>
     <div class="card-footer bg-white border-top-0">

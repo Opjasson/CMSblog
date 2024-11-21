@@ -15,7 +15,7 @@ class DashboardComposer
     {
         //
     }
-
+// Setting awalan
     public function compose(View $view): void
     {
 
@@ -29,6 +29,9 @@ class DashboardComposer
             'name' => config('app.name'),
             'lang' => str_replace('_', '-', app()->getLocale()),
         ]);
+
+    
+// ------------------------------------------------
         // Auth::user() akan mengakses data user yang sedang aktif
 
         $view->with('user', Auth::user());
@@ -42,6 +45,7 @@ class DashboardComposer
         $view->with('sidenavmenu',$this->generateMenu());
     }
 
+    // ------------------------------------------------
     private function generateMenu()
     {
         $menus = $this->getMenus();
